@@ -1,0 +1,12 @@
+---
+sudo: false
+language: ruby
+
+before_script:
+  - echo "--format documentation" > .rspec
+
+script:
+  - bundle exec rspec test.rb | grep "tests item d"
+  - bundle exec rspec test.rb | grep "5 examples"
+  - bundle exec rspec test.rb --tag collection:d | grep "tests item d"
+  - bundle exec rspec test.rb --tag collection:d | grep "1 example"
